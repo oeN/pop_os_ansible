@@ -1,0 +1,16 @@
+---
+- name: Update apt
+  apt:
+    update_cache: yes
+  tags:
+    - packages
+
+- name: Install universal base packages
+  apt:
+      name: "{{ base_packages }}"
+      state: present
+  tags:
+    - packages
+
+- include: shell.yml
+- include: user.yml

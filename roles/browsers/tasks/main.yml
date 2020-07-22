@@ -1,0 +1,24 @@
+---
+- name: Install Chromium
+  apt:
+    name: chromium
+    state: present
+  tags:
+    - packages
+
+- name: Remove Firefox
+  apt:
+    name: firefox
+    state: absent
+  tags:
+    - packages
+
+- name: Install Firefox Developer Edition
+  expect:
+    command: umake web firefox-dev
+    responses:
+      (?i)installation path: /home/{{ user.name }}/.local/share/umake/web/firefox-dev
+      (?i)language: en-US
+    timeout: null
+  become: yes
+  become_user: "{{ user.name }}"

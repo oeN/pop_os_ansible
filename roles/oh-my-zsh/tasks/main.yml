@@ -1,0 +1,21 @@
+---
+- name: Checkout Oh My Zsh repo
+  become: yes
+  become_user: "{{ user.name }}"
+  git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git 
+    dest: /home/{{ user.name }}/.oh-my-zsh
+
+- name: Checkout zsh-autosuggestions repo
+  become: yes
+  become_user: "{{ user.name }}"
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /home/{{ user.name }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+- name: Checkout zsh-syntax-highlighting repo
+  become: yes
+  become_user: "{{ user.name }}"
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: /home/{{ user.name }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting

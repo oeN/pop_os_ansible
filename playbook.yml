@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: yes
+  roles:
+    - { role: base, tags: ['base'] }
+    - { role: dotfiles, tags: ['dotfiles'] }
+    - { role: oh-my-zsh, tags: ['oh-my-zsh'] }
+    - { role: asdf, tags: ['asdf'] }
+    - { role: docker, tags: ['docker'] }
+    - { role: ubuntu-make, tags: ['ubuntu-make'] }
+    - { role: browsers, tags: ['browsers'] }
+    - { role: insomnia, tags: ['insomnia'] }

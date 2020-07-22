@@ -1,0 +1,8 @@
+---
+- name: Update user shell
+  user:
+    name: "{{ user.name }}"
+    shell: "{{ user.shell }}"
+    append: yes
+  tags:
+    - user

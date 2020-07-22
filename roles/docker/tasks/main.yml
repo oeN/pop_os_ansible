@@ -1,0 +1,83 @@
+---
+- name: Remove old version of Docker
+  apt:
+    name:
+      - docker 
+      - docker-engine 
+      - docker.io 
+      - containerd  
+      - runc
+    state: absent
+  tags:
+    - packages
+    - docker
+
+- name: Install docker dependencie
+  apt:
+      name: 
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg-agent
+        - software-properties-common
+      state: present
+  tags:
+    - packages
+    - docker
+
+- name: Add docker official GPG key
+  apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+  tags:
+    - docker
+
+- name: Add docker repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+  tags:
+    - docker
+
+- name: Install docker engine
+  apt:
+    update_cache: yes
+    name:
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io
+    state: present
+  tags:
+    - docker
+    - packages
+
+- name: enable docker service
+  service:
+    name: docker.service
+    enabled: yes
+  tags:
+    - docker
+
+- name: start docker service
+  service:
+    name: docker.service
+    state: restarted
+  tags:
+    - docker
+
+- name: Adding user {{ user.name }} to docker group
+  user:
+      name: "{{ user.name }}"
+      groups: docker
+      append: yes
+  tags:
+    - user
+
+- name: Install docker-compose
+  apt:
+      name: docker-compose
+      state: present
+  tags:
+    - packages
+    - docker
+

@@ -1,0 +1,7 @@
+---
+- name: Install insomnia
+  snap:
+    name: insomnia
+    state: present
+  tags:
+    - packages

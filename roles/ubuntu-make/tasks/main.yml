@@ -1,0 +1,16 @@
+---
+- name: Add ubuntu-make repository
+  apt_repository:
+    repo: ppa:lyzardking/ubuntu-make
+    state: present
+  tags:
+    - packages
+    - ubuntu-make
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    name: ubuntu-make
+    state: present
+  tags:
+    - packages

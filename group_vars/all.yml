@@ -1,0 +1,39 @@
+user:
+  name: diomedet
+  uid: 1000
+  group: diomedet
+  shell: /usr/bin/zsh
+  email:  diomede.tripicchio@gmail.com
+
+dotfiles:
+  url: git@github.com:oeN/dotfiles.git
+
+base_packages:
+  - tmux
+  - vim
+  - alacritty
+  - rsync
+  - fzf
+  - git
+  - snapd
+  - build-essential 
+  - libssl-dev 
+  - zlib1g-dev 
+  - libbz2-dev
+  - libreadline-dev 
+  - libsqlite3-dev 
+  - wget 
+  - curl 
+  - llvm 
+  - libncurses5-dev 
+  - libncursesw5-dev
+  - xz-utils 
+  - tk-dev 
+  - libffi-dev 
+  - liblzma-dev 
+  - python-openssl
+  - python-pexpect
+
+asdf:
+  python: 3.8.2
+  nodejs: 14.5.0

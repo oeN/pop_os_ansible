@@ -1,0 +1,28 @@
+---
+- name: Install chezmoi
+  snap:
+      name: chezmoi
+      state: present
+      classic: yes
+  when: dotfiles is defined
+  tags:
+    - packages
+
+- name: Try to update chezmoi repo
+  command: /snap/bin/chezmoi update
+  become: yes
+  become_user: "{{ user.name }}"
+  ignore_errors: True
+  register: chezmoi_updated
+
+- name: Clone user dotfiles
+  command: chezmoi init {{dotfiles.url}}
+  when: dotfiles is defined and chezmoi_updated.rc == 1
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Apply chezmoi changes
+  command: chezmoi apply
+  when: dotfiles is defined 
+  become: yes
+  become_user: "{{ user.name }}"
