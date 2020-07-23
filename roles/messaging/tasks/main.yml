@@ -1,0 +1,15 @@
+--- 
+- name: Install Slack
+  snap:
+    name: slack
+    state: present
+    classic: yes
+  tags:
+    - slack
+
+- name: Install Discord
+  apt:
+    name: discord
+    state: present
+  tags:
+    - discord

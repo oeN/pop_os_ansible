@@ -1,0 +1,22 @@
+---
+- name: Install editors
+  apt:
+    name: "{{ editors }}"
+    state: present
+
+- name: Vim
+  apt:
+    name: vim
+    state: present
+
+- name: Vundle
+  become: yes
+  become_user: "{{ user.name }}"
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git 
+    dest: /home/{{ user.name }}/.vim/bundle/Vundle.vim
+
+- name: Install Vim Plugins
+  become: yes
+  become_user: "{{ user.name }}"
+  command: vim +PluginInstall +qall

@@ -10,3 +10,5 @@
     - { role: ubuntu-make, tags: ['ubuntu-make'] }
     - { role: browsers, tags: ['browsers'] }
     - { role: insomnia, tags: ['insomnia'] }
+    - { role: messaging, tags: ['messaging'] }
+    - { role: editors, tags: ['editors'] }
