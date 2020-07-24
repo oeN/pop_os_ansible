@@ -1,0 +1,12 @@
+---
+- name: Get latest stable version of kubernetes
+  command: curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt
+  register: stable_release
+
+- name: Download kubectl
+  get_url:
+    url: https://storage.googleapis.com/kubernetes-release/release/{{ stable_release.stdout }}/bin/linux/amd64/kubectl 
+    dest: /usr/local/bin/kubectl
+    username: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: '0770'

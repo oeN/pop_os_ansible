@@ -35,6 +35,10 @@ base_packages:
   - python-pexpect
   - wireguard
   - yubioath-desktop
+  - network-manager-openvpn
+  - network-manager-openvpn-gnome
+  - libcurl4-openssl-dev # needed for python
+  - libssl-dev # needed for python
 
 asdf:
   python: 3.8.2

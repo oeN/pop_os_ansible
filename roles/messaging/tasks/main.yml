@@ -1,9 +1,8 @@
 --- 
 - name: Install Slack
-  snap:
-    name: slack
+  apt:
+    name: slack-desktop
     state: present
-    classic: yes
   tags:
     - slack
 

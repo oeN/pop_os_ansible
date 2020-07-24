@@ -12,3 +12,8 @@
     - { role: insomnia, tags: ['insomnia'] }
     - { role: messaging, tags: ['messaging'] }
     - { role: editors, tags: ['editors'] }
+    - { role: kubernetes, tags: ['kubernetes'] }
+    # TODO: Configure the compose key
+    # TODO: install the nerd font
+    # TODO: install starship
+    # TODO: disable the Super+p shortcut
